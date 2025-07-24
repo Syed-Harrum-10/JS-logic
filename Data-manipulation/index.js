@@ -22,7 +22,30 @@ const orders = {
   C303: { amount: 90, status: "shipped" }
 };
 
-function filterOrders (){
-    return Object.keys(orders).filter(orderId => orders[orderId].status === "shipped");
+function filterOrders (order){
+    return Object.keys(order).filter(orderId => orders[orderId].status === "shipped");
 }
-console.log(filterOrders())
+console.log(filterOrders(orders))
+
+// Nested Object Destructuring 
+
+const user = {
+  id: 101,
+  name: "Aisha",
+  location: {
+    country: "USA",
+    city: "New York"
+  },
+  preferences: {
+    theme: "dark",
+    notifications: {
+      email: true,
+      sms: false
+    }
+  }
+};
+
+function filterDetails (){
+    return `${user.name} from ${user.location.city} prefer ${user.preferences.theme} and notifications: ${user.preferences.notifications.email} `
+}
+console.log(filterDetails())
