@@ -13,3 +13,16 @@ function filterUsers (user){
     return extractUser
 }
 console.log(filterUsers(users))
+
+// Object Manipulation 
+
+const orders = {
+  A101: { amount: 250, status: "shipped" },
+  B202: { amount: 120, status: "pending" },
+  C303: { amount: 90, status: "shipped" }
+};
+
+function filterOrders (){
+    return Object.keys(orders).filter(orderId => orders[orderId].status === "shipped");
+}
+console.log(filterOrders())
