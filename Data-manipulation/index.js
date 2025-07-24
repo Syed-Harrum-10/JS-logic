@@ -49,3 +49,16 @@ function filterDetails (){
     return `${user.name} from ${user.location.city} prefer ${user.preferences.theme} and notifications: ${user.preferences.notifications.email} `
 }
 console.log(filterDetails())
+
+// Spread & Rest Operator
+
+const electronics = ["Laptop", "Phone", "Tablet"];
+const accessories = ["Charger", "Headphones"];
+
+const inventory = [...electronics, ...accessories];
+
+function listInventory(...items) {
+  return `We have ${items.join(", ")} in stock.`;
+}
+
+console.log(listInventory("Laptop", "Phone", "Charger"));
