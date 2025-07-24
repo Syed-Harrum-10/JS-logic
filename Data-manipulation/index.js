@@ -122,3 +122,20 @@ async function getData(userId) {
 }
 
 getData(101);
+
+// Combined Logic
+
+const rawUsers = [
+  { id: 1, name: "Harrum", age: 25, country: "USA" },
+  { id: 2, name: "Ali", age: 17, country: "CANADA" },
+  { id: 3, name: "John", age: 30, country: "US" },
+  { id: 4, name: "Ahmed", age: 19, country: "CANADA" }
+];
+function CombinedLogic() {
+  const filtered = rawUsers
+    .filter(user => user.country === "CANADA" && user.age >= 18)
+    .map(({ name, age }) => `${name} is ${age} years old`);
+    
+  return filtered;
+}
+console.log(CombinedLogic())
