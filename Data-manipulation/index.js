@@ -62,3 +62,31 @@ function listInventory(...items) {
 }
 
 console.log(listInventory("Laptop", "Phone", "Charger"));
+
+function fetchUser(userId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ id: userId, name: "Harrum" });
+    }, 1000);
+  });
+}
+
+// Promises (Chaining)
+
+function fetchOrders(userId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(["order1", "order2", "order3"]);
+    }, 1000);
+  });
+}
+
+fetchUser(101)
+  .then(user => {
+    return fetchOrders(user.id).then(orders => {
+      return { user, orders }; 
+    });
+  })
+  .then(({ user, orders }) => {
+    console.log(`User ${user.name} has orders: ${orders.join(", ")}`);
+  });
