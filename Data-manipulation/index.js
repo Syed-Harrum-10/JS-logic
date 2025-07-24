@@ -123,7 +123,7 @@ async function getData(userId) {
 
 getData(101);
 
-// Combined Logic
+// Combined Logic #1
 
 const rawUsers = [
   { id: 1, name: "Harrum", age: 25, country: "USA" },
@@ -139,3 +139,18 @@ function CombinedLogic() {
   return filtered;
 }
 console.log(CombinedLogic())
+
+// Combined Logic #2
+
+const dashboardUsers = [
+  { id: 1, name: "Harrum", isActive: true, verified: true },
+  { id: 2, name: "Ali", isActive: false, verified: true },
+  { id: 3, name: "John", isActive: true, verified: false },
+  { id: 4, name: "Sara", isActive: true, verified: true },
+];
+
+function filterData (){
+  const filter = dashboardUsers.filter(user => user.isActive === true && user.verified === true)
+  return filter.map(user => `${user.name} is active and verified`)
+}
+console.log(filterData())
