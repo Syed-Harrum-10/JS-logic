@@ -114,3 +114,16 @@ fetchPublishedPosts(allPosts).then(user => {
 }).catch((res)=>{
     console.log(res)
 })
+
+// async/await 
+
+async function getData(): Promise<void> {
+  try {
+    const data = await fetchPublishedPosts(allPosts);
+    console.log("Published Posts:", data);
+  } catch (err) {
+    console.error("Something went wrong:", err);
+  }
+}
+
+getData();
