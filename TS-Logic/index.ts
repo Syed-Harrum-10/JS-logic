@@ -81,3 +81,36 @@ function mergeArrays <T> (ArrayFirst: T[], ArraySecond: T[]): T[]{
 }
 
 console.log(mergeArrays<string>(["a", "b"], ["c"]))
+
+interface Post {
+  id: number;
+  title: string;
+  published: boolean;
+}
+
+const allPosts: Post[] = [
+  { id: 1, title: "Learn TS", published: true },
+  { id: 2, title: "Learn JS", published: false },
+  { id: 3, title: "Learn Node", published: true }
+];
+
+// Promises + Return Type
+
+function fetchPublishedPosts (post: Post[]): Promise<Post[]>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+           const filterPost = post.filter(post => post.published === true)
+           if(filterPost.length > 0){
+            return resolve(filterPost)
+           }else {
+            return reject("No posts found.")
+           }
+        }, 1000)
+    })
+}
+
+fetchPublishedPosts(allPosts).then(user => {
+    console.log("Posts:", user)
+}).catch((res)=>{
+    console.log(res)
+})

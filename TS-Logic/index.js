@@ -50,3 +50,27 @@ function mergeArrays(ArrayFirst, ArraySecond) {
     return mergeArray;
 }
 console.log(mergeArrays(["a", "b"], ["c"]));
+var allPosts = [
+    { id: 1, title: "Learn TS", published: true },
+    { id: 2, title: "Learn JS", published: false },
+    { id: 3, title: "Learn Node", published: true }
+];
+// Promises + Return Type
+function fetchPublishedPosts(post) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            var filterPost = post.filter(function (post) { return post.published === true; });
+            if (filterPost.length > 0) {
+                return resolve(filterPost);
+            }
+            else {
+                return reject("No posts found.");
+            }
+        }, 1000);
+    });
+}
+fetchPublishedPosts(allPosts).then(function (user) {
+    console.log("Posts:", user);
+}).catch(function (res) {
+    console.log(res);
+});
