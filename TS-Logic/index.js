@@ -19,3 +19,19 @@ function getActiveUserEmails(user) {
     return filterUser.map(function (user) { return user.email; });
 }
 console.log(getActiveUserEmails(users));
+var userProfile = {
+    id: 1,
+    name: "Harrum",
+    contact: {
+        email: "harrum@devmail.com",
+        phone: "123-456-7890"
+    },
+    preferences: {
+        theme: "dark",
+        language: "English"
+    }
+};
+function describeUser(profile) {
+    return "".concat(profile.name, " prefers ").concat(profile.preferences.theme, " and can be contacted at ").concat(profile.contact.email);
+}
+console.log(describeUser(userProfile));

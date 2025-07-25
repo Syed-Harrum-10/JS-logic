@@ -38,3 +38,37 @@ function getActiveUserEmails(user: User[]): string[] {
     return filterUser.map(user => user.email)
 }
 console.log(getActiveUserEmails(users))
+
+// Destructuring + Type Annotation
+
+interface Profile {
+  id: number;
+  name: string;
+  contact: {
+    email: string;
+    phone: string;
+  };
+  preferences: {
+    theme: "light" | "dark";
+    language: string;
+  };
+}
+
+const userProfile: Profile = {
+  id: 1,
+  name: "Harrum",
+  contact: {
+    email: "harrum@devmail.com",
+    phone: "123-456-7890"
+  },
+  preferences: {
+    theme: "dark",
+    language: "English"
+  }
+};
+
+function describeUser(profile: Profile): string{
+    return `${profile.name} prefers ${profile.preferences.theme} and can be contacted at ${profile.contact.email}`
+}
+
+console.log(describeUser(userProfile))
