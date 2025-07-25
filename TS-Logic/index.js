@@ -1,4 +1,13 @@
 // Array + Type 
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 var products = [
     { id: 1, name: "Laptop", inStock: true },
     { id: 2, name: "Mouse", inStock: false },
@@ -35,3 +44,9 @@ function describeUser(profile) {
     return "".concat(profile.name, " prefers ").concat(profile.preferences.theme, " and can be contacted at ").concat(profile.contact.email);
 }
 console.log(describeUser(userProfile));
+// Generics + Spread Operator
+function mergeArrays(ArrayFirst, ArraySecond) {
+    var mergeArray = __spreadArray(__spreadArray([], ArrayFirst, true), ArraySecond, true);
+    return mergeArray;
+}
+console.log(mergeArrays(["a", "b"], ["c"]));

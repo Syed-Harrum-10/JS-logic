@@ -72,3 +72,12 @@ function describeUser(profile: Profile): string{
 }
 
 console.log(describeUser(userProfile))
+
+// Generics + Spread Operator
+
+function mergeArrays <T> (ArrayFirst: T[], ArraySecond: T[]): T[]{
+    const mergeArray = [...ArrayFirst, ...ArraySecond]
+    return mergeArray
+}
+
+console.log(mergeArrays<string>(["a", "b"], ["c"]))
