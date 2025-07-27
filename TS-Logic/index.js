@@ -133,3 +133,24 @@ function getData() {
     });
 }
 getData();
+var userActivity = [
+    { id: 1, name: "Harrum", lastLogin: "2025-07-20", actions: 14 },
+    { id: 2, name: "Ali", lastLogin: "2025-07-01", actions: 0 },
+    { id: 3, name: "Sara", lastLogin: "2025-07-24", actions: 25 },
+    { id: 4, name: "Zara", lastLogin: "2025-06-30", actions: 3 },
+    { id: 5, name: "John", lastLogin: "2025-07-23", actions: 19 }
+];
+function getEngagedUsers() {
+    var today = new Date();
+    var sevenDaysAgo = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
+    var year = sevenDaysAgo.getFullYear();
+    var month = String(sevenDaysAgo.getMonth() + 1).padStart(2, '0');
+    var day = String(sevenDaysAgo.getDate()).padStart(2, '0');
+    var cutoffDate = "".concat(year, "-").concat(month, "-").concat(day);
+    var engagedUsers = userActivity.filter(function (user) {
+        return user.lastLogin >= cutoffDate && user.actions > 0;
+    });
+    var action = engagedUsers.filter(function (user) { return user.actions > 10; });
+    return action.map(function (user) { return "".concat(user.name, " (").concat(user.actions, " actions)"); });
+}
+console.log(getEngagedUsers());

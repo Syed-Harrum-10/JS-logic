@@ -127,3 +127,40 @@ async function getData(): Promise<void> {
 }
 
 getData();
+
+
+// Logic Drill 
+
+type userData = {
+  id: number,
+  name: string,
+  lastLogin: string
+  actions: number
+}
+
+const userActivity: userData[] = [
+  { id: 1, name: "Harrum", lastLogin: "2025-07-20", actions: 14 },
+  { id: 2, name: "Ali", lastLogin: "2025-07-01", actions: 0 },
+  { id: 3, name: "Sara", lastLogin: "2025-07-24", actions: 25 },
+  { id: 4, name: "Zara", lastLogin: "2025-06-30", actions: 3 },
+  { id: 5, name: "John", lastLogin: "2025-07-23", actions: 19 }
+];
+
+
+function getEngagedUsers() {
+  const today = new Date();
+  const sevenDaysAgo = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
+  
+  const year = sevenDaysAgo.getFullYear();
+  const month = String(sevenDaysAgo.getMonth() + 1).padStart(2, '0');
+  const day = String(sevenDaysAgo.getDate()).padStart(2, '0');
+  const cutoffDate = `${year}-${month}-${day}`;
+  
+  const engagedUsers = userActivity.filter(user => 
+    user.lastLogin >= cutoffDate && user.actions > 0
+  );
+  const action = engagedUsers.filter(user => user.actions > 10)
+  return action.map(user => `${user.name} (${user.actions} actions)`);
+}
+console.log(getEngagedUsers())
+
