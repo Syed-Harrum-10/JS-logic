@@ -181,3 +181,12 @@ function getSpecsSummary(product) {
     return "".concat(product.title, " comes with ").concat(product.specs.cpu, ", ").concat(product.specs.ram, " and ").concat(product.specs.storage);
 }
 console.log(getSpecsSummary(product));
+// Spread + Rest Pattern
+var electronics = ["Laptop", "Phone", "Tablet"];
+var accessories = ["Charger", "Mouse"];
+function combineInventory() {
+    var allItems = __spreadArray(__spreadArray([], electronics, true), accessories, true);
+    var mainProduct = allItems[0], otherItems = allItems.slice(1);
+    return "Main product is ".concat(mainProduct, ". Other items: ").concat(otherItems.join(", "));
+}
+console.log(combineInventory());

@@ -218,3 +218,17 @@ function getSpecsSummary(product){
   return `${product.title} comes with ${product.specs.cpu}, ${product.specs.ram} and ${product.specs.storage}`
 }
 console.log(getSpecsSummary(product))
+
+// Spread + Rest Pattern
+
+const electronics: string[] = ["Laptop", "Phone", "Tablet"];
+const accessories: string[] = ["Charger", "Mouse"];
+
+function combineInventory(): string {
+  const allItems = [...electronics, ...accessories];
+  const [mainProduct, ...otherItems] = allItems;
+
+  return `Main product is ${mainProduct}. Other items: ${otherItems.join(", ")}`;
+}
+
+console.log(combineInventory())
