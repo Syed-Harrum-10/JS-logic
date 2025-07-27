@@ -154,3 +154,16 @@ function getEngagedUsers() {
     return action.map(function (user) { return "".concat(user.name, " (").concat(user.actions, " actions)"); });
 }
 console.log(getEngagedUsers());
+var userObject = [
+    { id: 1, name: "Harrum", role: "admin" },
+    { id: 2, name: "Ali", role: "user" },
+    { id: 3, name: "Sara", role: "moderator" }
+];
+function createUserLookup() {
+    var userFilter = Object.keys(userObject).reduce(function (accumulator, key) {
+        accumulator[key] = userObject[key];
+        return accumulator;
+    }, {});
+    return userFilter;
+}
+console.log(createUserLookup());

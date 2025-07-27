@@ -164,3 +164,27 @@ function getEngagedUsers() {
 }
 console.log(getEngagedUsers())
 
+
+// Object transformation 
+
+type UserType = {
+  id: number,
+  name: string,
+  role: string
+}
+
+const userObject: UserType[] = [
+  { id: 1, name: "Harrum", role: "admin" },
+  { id: 2, name: "Ali", role: "user" },
+  { id: 3, name: "Sara", role: "moderator" }
+];
+
+function createUserLookup(){
+  const userFilter = Object.keys(userObject).reduce((accumulator, key) => {
+    accumulator[key] = userObject[key];
+    return accumulator;
+  }, {});
+  return userFilter
+}
+
+console.log(createUserLookup())
