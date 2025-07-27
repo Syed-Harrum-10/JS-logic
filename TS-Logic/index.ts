@@ -188,3 +188,33 @@ function createUserLookup(){
 }
 
 console.log(createUserLookup())
+
+// Destructuring
+
+type userProduct = {
+  id: number,
+  title: string,
+  specs: {
+    cpu: string,
+    ram: string,
+    storage: string
+  },
+  price: number
+}
+
+
+const product: userProduct = {
+  id: 101,
+  title: "Gaming Laptop",
+  specs: {
+    cpu: "Intel i7",
+    ram: "16GB",
+    storage: "1TB SSD"
+  },
+  price: 1500
+};
+
+function getSpecsSummary(product){
+  return `${product.title} comes with ${product.specs.cpu}, ${product.specs.ram} and ${product.specs.storage}`
+}
+console.log(getSpecsSummary(product))

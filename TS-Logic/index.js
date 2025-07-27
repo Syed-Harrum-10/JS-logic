@@ -167,3 +167,17 @@ function createUserLookup() {
     return userFilter;
 }
 console.log(createUserLookup());
+var product = {
+    id: 101,
+    title: "Gaming Laptop",
+    specs: {
+        cpu: "Intel i7",
+        ram: "16GB",
+        storage: "1TB SSD"
+    },
+    price: 1500
+};
+function getSpecsSummary(product) {
+    return "".concat(product.title, " comes with ").concat(product.specs.cpu, ", ").concat(product.specs.ram, " and ").concat(product.specs.storage);
+}
+console.log(getSpecsSummary(product));
