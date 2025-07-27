@@ -255,3 +255,65 @@ function getTopStudents(){
 }
 
 console.log(getTopStudents())
+
+
+type setting = {
+  key: string,
+  value: string
+}
+
+const settings: setting[] = [
+  { key: "theme", value: "dark" },
+  { key: "language", value: "en" },
+  { key: "notifications", value: "enabled" }
+];
+
+
+function buildSettingsObject(): Record<string, string> {
+  return settings.reduce((acc, value) => {
+    acc[value.key] = value.value;
+    return acc; 
+  }, {} as Record<string, string>); 
+}
+
+console.log(buildSettingsObject())
+
+
+type Applicant = {
+  name: string;
+  email: string;
+  experience: number; 
+  portfolio?: string; 
+};
+
+const applicant: Applicant = {
+  name: "Harrum",
+  email: "harrum@devmail.com",
+  experience: 2,
+  portfolio: "https://github.com/harrum"
+};
+
+// Conditional rendering
+
+function evaluateApplicant(user: Applicant): string {
+  if (user.experience >= 5 && user.portfolio) {
+    return "Senior candidate with portfolio";
+  }
+
+  if (user.experience >= 3 && user.experience < 5) {
+    return "Mid-level candidate";
+  }
+
+  if (user.experience < 3 && user.portfolio) {
+    return "Junior candidate with portfolio";
+  }
+
+  if (user.experience < 3 && !user.portfolio) {
+    return "Junior candidate - portfolio missing";
+  }
+
+  return "Invalid data"; 
+}
+
+
+console.log(evaluateApplicant(applicant))
