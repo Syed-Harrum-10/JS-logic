@@ -190,3 +190,15 @@ function combineInventory() {
     return "Main product is ".concat(mainProduct, ". Other items: ").concat(otherItems.join(", "));
 }
 console.log(combineInventory());
+var students = [
+    { id: 1, name: "Harrum", grade: 92 },
+    { id: 2, name: "Ali", grade: 58 },
+    { id: 3, name: "Sara", grade: 76 },
+    { id: 4, name: "Zara", grade: 40 },
+    { id: 5, name: "John", grade: 89 }
+];
+function getTopStudents() {
+    var filterStudents = students.filter(function (user) { return user.grade > 70; });
+    return filterStudents.map(function (user) { return "".concat(user.name, " scored ").concat(user.grade); });
+}
+console.log(getTopStudents());

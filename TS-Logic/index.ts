@@ -232,3 +232,26 @@ function combineInventory(): string {
 }
 
 console.log(combineInventory())
+
+// Filter + Map
+
+type Student = {
+  id: number,
+  name: string,
+  grade: number
+}
+
+const students: Student[] = [
+  { id: 1, name: "Harrum", grade: 92 },
+  { id: 2, name: "Ali", grade: 58 },
+  { id: 3, name: "Sara", grade: 76 },
+  { id: 4, name: "Zara", grade: 40 },
+  { id: 5, name: "John", grade: 89 }
+];
+
+function getTopStudents(){
+  const filterStudents = students.filter(user => user.grade > 70)
+  return filterStudents.map(user => `${user.name} scored ${user.grade}`)
+}
+
+console.log(getTopStudents())
