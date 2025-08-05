@@ -343,3 +343,18 @@ function addTask(name: string): Task {
 
 console.log(addTask('new data'));
 console.log(addTask('go gym'));
+
+
+// MARK TASK 
+
+function markTaskDone (taskId: string, date: string): void {
+  const findTASK = tasks.find(tasks => tasks.id === taskId)
+  if(!findTASK){
+    return console.log("Task not found")
+  }
+  if (!findTASK.completedDates.includes(date)) {
+  findTASK.completedDates.push(date);
+}
+}
+
+
