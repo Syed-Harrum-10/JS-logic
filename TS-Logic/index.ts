@@ -357,4 +357,30 @@ function markTaskDone (taskId: string, date: string): void {
 }
 }
 
+// Find correct permissions
+const users = [
+  { id: 'u1', name: 'Alice', role: 'admin' },
+  { id: 'u2', name: 'Bob', role: 'editor' },
+  { id: 'u3', name: 'Charlie', role: 'viewer' }
+];
+
+const permissions = {
+  admin: ['create-post', 'delete-user', 'read-analytics'],
+  editor: ['create-post', 'read-analytics'],
+  viewer: ['read-analytics']
+};
+
+
+function canUserPerform(userId: string, permission: string): boolean {
+  const user = users.find(u => u.id === userId);
+  if (!user) return false;
+  const role = user.role;
+  const rolePermissions = permissions[role];
+  if (!rolePermissions || !rolePermissions.includes(permission)) return false;
+  return true;
+}
+
+
+console.log(canUserPerform('u1', 'delete-user'));
+
 

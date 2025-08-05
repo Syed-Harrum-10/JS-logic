@@ -250,3 +250,35 @@ function addTask(name) {
 }
 console.log(addTask('new data'));
 console.log(addTask('go gym'));
+// MARK TASK 
+function markTaskDone(taskId, date) {
+    var findTASK = tasks.find(function (tasks) { return tasks.id === taskId; });
+    if (!findTASK) {
+        return console.log("Task not found");
+    }
+    if (!findTASK.completedDates.includes(date)) {
+        findTASK.completedDates.push(date);
+    }
+}
+// Find correct permissions
+var users = [
+    { id: 'u1', name: 'Alice', role: 'admin' },
+    { id: 'u2', name: 'Bob', role: 'editor' },
+    { id: 'u3', name: 'Charlie', role: 'viewer' }
+];
+var permissions = {
+    admin: ['create-post', 'delete-user', 'read-analytics'],
+    editor: ['create-post', 'read-analytics'],
+    viewer: ['read-analytics']
+};
+function canUserPerform(userId, permission) {
+    var user = users.find(function (u) { return u.id === userId; });
+    if (!user)
+        return false;
+    var role = user.role;
+    var rolePermissions = permissions[role];
+    if (!rolePermissions || !rolePermissions.includes(permission))
+        return false;
+    return true;
+}
+console.log(canUserPerform('u1', 'delete-user'));
