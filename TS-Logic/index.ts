@@ -317,3 +317,29 @@ function evaluateApplicant(user: Applicant): string {
 
 
 console.log(evaluateApplicant(applicant))
+
+// TASK 
+
+interface Task {
+  id: string;
+  name: string;
+  completedDates: string[]; 
+}
+
+const tasks: Task[] = [];
+
+function addTask(name: string): Task {
+  const id = Date.now().toString(); 
+
+  const task: Task = { 
+    id,
+    name,
+    completedDates: []
+  };
+
+  tasks.push(task);
+  return task;
+}
+
+console.log(addTask('new data'));
+console.log(addTask('go gym'));

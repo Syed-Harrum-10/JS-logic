@@ -237,3 +237,16 @@ function evaluateApplicant(user) {
     return "Invalid data";
 }
 console.log(evaluateApplicant(applicant));
+var tasks = [];
+function addTask(name) {
+    var id = Date.now().toString();
+    var task = {
+        id: id,
+        name: name,
+        completedDates: []
+    };
+    tasks.push(task);
+    return task;
+}
+console.log(addTask('new data'));
+console.log(addTask('go gym'));
